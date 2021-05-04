@@ -6,42 +6,55 @@ public class RockPaperScissors {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        for (int i = 1; i < 999; i++) {
+        int choice;
+        int win = 0;
+        int lose = 0;
+        int draw = 0;
+
+        do {
             System.out.println("Choose 1: Rock, 2: Paper, 3:Scissors, 4: End game.");
-            int choice = sc.nextInt();
-
-            if (choice == 1 || choice == 2 || choice == 3) {
-                int PCchoice = 0;
-                if (Math.random() < 0.25) {
-                    PCchoice = 1;
-                } else if (Math.random() > 0.25 | Math.random() < 0.5) {
-                    PCchoice = 2;
-                } else if (Math.random() > 0.5) {
-                    PCchoice = 3;
-                }
-                
-                if (choice == PCchoice) {
-                    System.out.println("Lygiosios1");
-                }
-                
-
-                System.out.println("good choice");
-            }
-            
-            
-            
-            
-            
-            
-            if (choice == 4) {
-                break;
-            }
+            choice = sc.nextInt();
             if (choice > 4 || choice < 1) {
                 System.out.println("Idiot, that's not the option");
-            }
-        }
 
+            } else if (choice < 4) {
+                int PCchoice = (int) (Math.random() * 3 + 1);
+
+                if (choice == PCchoice) {
+                    System.out.println("Draw");
+                    draw++;
+                } else if (choice == 1) {
+                    if (PCchoice == 3) {
+                        System.out.println("You win");
+                        win++;
+                    } else {
+                        System.out.println("You lose :(");
+                        lose++;
+                    }
+                } else if (choice == 2) {
+                    if (PCchoice == 1) {
+                        System.out.println("You win");
+                        win++;
+                    } else {
+                        System.out.println("You lose :(");
+                        lose++;
+                    }
+                } else if (choice == 3) {
+                    if (PCchoice == 2) {
+                        System.out.println("You win");
+                        win++;
+                    } else {
+                        System.out.println("You lose :(");
+                        lose++;
+                    }
+                }
+            }
+        } while (choice != 4);
         System.out.println("Results:");
+        System.out.println("Times you won:" + win);
+        System.out.println("Times you lost:" + lose);
+        System.out.println("Draws:" + draw);
+
 
         /*
     Akmuo - popierius - zirkles
